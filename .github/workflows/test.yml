@@ -84,11 +84,6 @@ jobs:
       run: make --touch provider schema build_${{ matrix.language }}
     - name: Update path
       run: echo "${{ github.workspace }}/bin" >> "$GITHUB_PATH"
-    - name: Install Python deps
-      if: matrix.language == 'python'
-      run: |-
-        pip3 install virtualenv==20.0.23
-        pip3 install pipenv
     - name: Install dependencies
       run: make install_${{ matrix.language}}_sdk
     - name: Run tests
