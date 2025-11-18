@@ -21,15 +21,11 @@ jobs:
     name: build_sdk
     runs-on: ubuntu-latest
     strategy:
-      # We normally fail fast unless this is a PR from Renovate in which case
-      # we'll always build all SDKs in case there are any changes to commit.
+      # Building only Go SDK
       fail-fast: ${{ ! contains(github.actor, 'renovate') }}
       matrix:
         language:
-        - dotnet
         - go
-        - nodejs
-        - python
     permissions:
       contents: write # For Renovate SDKs.
       id-token: write # For ESC secrets.
@@ -92,11 +88,7 @@ jobs:
           # Keep these in sync with the Renovate step below to avoid them getting checked in.
           allowed-changes: |
             sdk/**/pulumi-plugin.json
-            sdk/dotnet/*.csproj
             sdk/go/**/pulumiUtilities.go
-            sdk/nodejs/package.json
-            sdk/python/pyproject.toml
-            sdk/java/build.gradle
             **/mise.lock
             **/.config/mise.lock
             **/mise.*.lock
@@ -123,18 +115,13 @@ jobs:
           git stash pop
           git add sdk
           git reset \
-              sdk/python/*/pulumi-plugin.json \
-              sdk/python/pyproject.toml \
-              sdk/dotnet/pulumi-plugin.json \
-              sdk/dotnet/Pulumi.*.csproj \
               sdk/go/*/pulumi-plugin.json \
-              sdk/go/*/internal/pulumiUtilities.go \
-              sdk/nodejs/package.json
-          git commit -m 'Commit ${{ matrix.language }} SDK for Renovate'
+              sdk/go/*/internal/pulumiUtilities.go
+          git commit -m 'Commit Go SDK for Renovate'
 
           # Push with pulumi-bot credentials to trigger a re-run of the
           # workflow. https://github.com/orgs/community/discussions/25702
-          git push https://pulumi-bot:${{ steps.esc-secrets.outputs.PULUMI_BOT_TOKEN }}@github.com/${{ github.repository }} \
+          git push https://pulumi-bot:${{ secrets.PULUMI_BOT_TOKEN }}@github.com/${{ github.repository }} \
               "HEAD:$HEAD_REF"
         env:
           # head_ref is untrusted so it's recommended to pass via env var to

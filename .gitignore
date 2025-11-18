@@ -5,7 +5,6 @@
 **/bin/
 **/obj/
 Pulumi.*.yaml
-**/node_modules/
 .DS_Store
 
 **/command-output/
@@ -15,28 +14,15 @@ Pulumi.*.yaml
 *.sln
 .vscode/settings.json
 
-yarn.lock
 **/pulumiManifest.go
 
 ci-scripts
 provider/**/schema-embed.json
 **/version.txt
-**/nuget
 **/dist
 
-sdk/java/build
-sdk/java/.gradle
-sdk/java/gradle
-sdk/java/gradlew
-sdk/java/gradlew.bat
-
-sdk/python/venv
-
-# Ignore generated SDK files (they are built by CI/CD)
+# Ignore generated Go SDK (built by CI/CD)
 sdk/go/
-sdk/nodejs/
-sdk/python/
-sdk/dotnet/
 
 go.work
 go.work.sum
