@@ -32,6 +32,12 @@ sdk/java/gradlew.bat
 
 sdk/python/venv
 
+# Ignore generated SDK files (they are built by CI/CD)
+sdk/go/
+sdk/nodejs/
+sdk/python/
+sdk/dotnet/
+
 go.work
 go.work.sum
 
