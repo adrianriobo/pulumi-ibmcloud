@@ -1,5 +1,0 @@
-# Overwrites mise configuration at .config/mise.toml
-# Override GitHub backend tools with Go backend (GitHub backend doesn't work for these)
-[tools]
-"go:github.com/pulumi/pulumictl/cmd/pulumictl" = 'latest'
-# schema-tools is installed separately in workflows that need it (prerequisites.yml, publish.yml)
