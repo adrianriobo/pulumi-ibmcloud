@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-xyz/sdk
+module github.com/mapt-oss/pulumi-ibmcloud/sdk
 
 go 1.23.11
 
