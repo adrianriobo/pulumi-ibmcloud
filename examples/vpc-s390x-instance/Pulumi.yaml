@@ -1,0 +1,17 @@
+name: vpc-s390x-instance
+runtime: go
+description: A basic Pulumi example that creates an IBM Cloud VPC and launches an s390x (LinuxONE) virtual server instance
+
+config:
+  region:
+    description: IBM Cloud region (e.g., us-east, us-south, eu-gb, eu-de)
+    default: us-east
+  zone:
+    description: IBM Cloud availability zone (e.g., us-east-1, us-east-2)
+  resourceGroup:
+    description: IBM Cloud resource group ID or name
+  sshPublicKey:
+    description: SSH public key for instance access
+    secret: false
+  imageId:
+    description: Image ID for the s390x instance (must be compatible with s390x architecture)

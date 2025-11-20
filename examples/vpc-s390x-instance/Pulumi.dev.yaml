@@ -1,0 +1,10 @@
+config:
+  # Uncomment and set these values for your environment
+  # vpc-s390x-instance:region: us-east
+  # vpc-s390x-instance:zone: us-east-1
+  # vpc-s390x-instance:resourceGroup: Default
+  # vpc-s390x-instance:sshPublicKey: "ssh-rsa AAAAB3Nza..."
+  # vpc-s390x-instance:imageId: r014-xxxx-xxxx-xxxx-xxxx
+
+  # IBM Cloud configuration
+  # ibmcloud:region: us-east
